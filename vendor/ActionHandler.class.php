@@ -66,12 +66,12 @@ class ActionHandler extends Handler {
         switch ($this->getAction()){
             case 'findAll':
                 // find all data from table
-                if(! $this->getPrivileges()->isGranted('select')) $data = $this->getPermissionMessage();
+                if(! $this->getPrivileges()->isGranted('select')) $data = $this->getPermissionMessage('select from');
                 else $data = $this->getDracula()->findAll();
                 break;
             case 'find':
                 // find data with given column
-                if(! $this->getPrivileges()->isGranted('select')) $data = $this->getPermissionMessage();
+                if(! $this->getPrivileges()->isGranted('select')) $data = $this->getPermissionMessage('select from');
                 else{
                     if(count($params) <= 2 ) $data = array('err' => 'Specify a condition');
                     else{
@@ -86,7 +86,7 @@ class ActionHandler extends Handler {
                 break;
             case 'count':
                 // get rows count
-                if(! $this->getPrivileges()->isGranted('select')) $data = $this->getPermissionMessage();
+                if(! $this->getPrivileges()->isGranted('select')) $data = $this->getPermissionMessage('select from');
                 else{
                     $condition = [];
                     foreach ($params as $key=>$param)
@@ -98,16 +98,23 @@ class ActionHandler extends Handler {
                 break;
             case 'delete':
                 // delete with given column
-                if(! $this->getPrivileges()->isGranted('delete')) $data = $this->getPermissionMessage();
+                if(! $this->getPrivileges()->isGranted('delete')) $data = $this->getPermissionMessage('delete from');
                 else{
                     $condition = null;
                     foreach ($params as $key=>$param) if($param != 'context' && $param != 'action') $condition = "$key='$param'";
                     $data = $this->getDracula()->delete($condition);
                 }
                 break;
+            case 'insert':
+                // update given columns
+                if(! $this->getPrivileges()->isGranted('insert')) $data = $this->getPermissionMessage('insert into');
+                else{
+                    // update
+                }
+                break;
             case 'update':
                 // update given columns
-                if(! $this->getPrivileges()->isGranted('update')) $data = $this->getPermissionMessage();
+                if(! $this->getPrivileges()->isGranted('update')) $data = $this->getPermissionMessage('update');
                 else{
                     // update
                 }
@@ -117,8 +124,8 @@ class ActionHandler extends Handler {
         (new Logger())->json($data);
     }
 
-    public function getPermissionMessage(){
-        return array('err' => 'You don\'t have permission to fetch this resource');
+    public function getPermissionMessage($msg){
+        return array('err' => 'You don\'t have permission to '.$msg.' this resource');
     }
 
     /**

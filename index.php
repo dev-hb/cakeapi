@@ -9,10 +9,10 @@
  * @website https://devcrawlers.com
  */
 
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Headers: *");
-
 require_once 'autoload.php';
+
+// accord permission to users
+(new Permission())->setHost('*')->accordAll();
 
 $action = new ActionHandler();
 $context = $action->getContext();
