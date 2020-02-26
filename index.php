@@ -12,7 +12,8 @@
 require_once 'autoload.php';
 
 // accord permission to users
-(new Permission())->setHost('*')->accordAll();
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: *");
 
 $action = new ActionHandler();
 $context = $action->getContext();

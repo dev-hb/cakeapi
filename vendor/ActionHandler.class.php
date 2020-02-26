@@ -99,6 +99,7 @@ class ActionHandler extends Handler {
             case 'delete':
                 // delete with given column
                 if(! $this->getPrivileges()->isGranted('delete')) $data = $this->getPermissionMessage('delete from');
+                else if($this->getMethod() == 'GET') $data = array('err' => 'Use POST request instead');
                 else{
                     $condition = null;
                     foreach ($params as $key=>$param) if($param != 'context' && $param != 'action') $condition = "$key='$param'";
@@ -108,6 +109,7 @@ class ActionHandler extends Handler {
             case 'insert':
                 // update given columns
                 if(! $this->getPrivileges()->isGranted('insert')) $data = $this->getPermissionMessage('insert into');
+                else if($this->getMethod() == 'GET') $data = array('err' => 'Use POST request instead');
                 else{
                     // update
                 }
@@ -115,6 +117,7 @@ class ActionHandler extends Handler {
             case 'update':
                 // update given columns
                 if(! $this->getPrivileges()->isGranted('update')) $data = $this->getPermissionMessage('update');
+                else if($this->getMethod() == 'GET') $data = array('err' => 'Use POST request instead');
                 else{
                     // update
                 }
