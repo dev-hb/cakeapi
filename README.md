@@ -1,4 +1,12 @@
-# apiprovider
+<h1>Welcome to API Provider
+</h1>
+<hr>
+
+<h3>Download</h3>
+<p>
+    If you would like to taste API Provider <a href="https://github.com/dev-hb/apiprovider" target="_blank">git it from Github</a>.<br />
+    <i>Don't forget to give us a star &star;</i>
+</p>
 
 <h3>API Provider command line file</h3>
 <h4>Description</h4>
@@ -14,9 +22,9 @@
         <li><code>create_model Modelname</code> : This one creates a model with the given name</li>
         <li><code>create_preferred Modelname</code> : Create a preferred model under preferred directory</li>
         <li><code>clear</code> : This command deletes all models in project (critical usage)</li>
-        <li><code>grant</code> : Used to give a model the permission to select, update, insert or delete</li>
+        <li><code>grant</code> : Used to give a model the permission to select, update, insert, delete or all</li>
         <li><code>revoke</code> : Used to delete model's permissions</li>
-        <li><code>update</code> : update the API Provider to a higher version is exists (not available yet)</li>
+        <li><code>update</code> : Update the API Provider to a higher version is exists (not available yet)</li>
     </ul>
     Example of use : php provider create_model Product<br />
     This will ask you fields of the model, the fields names <b>MUST</b> be the same in the database table, if you are done with fields
@@ -40,11 +48,12 @@
     <li>dbname : database name</li>
 </ul>
 <i>Ps : the file must not have white spaces ot empty lines</i>
-<br />
-To use CRUD links follow this link structure :<br />
-<code>
-    hostname/project_name/index.php?context=[CONTEXT]&action=[ACTION][&FIELD=VALUE[...]]
-</code>
+<br>
+    To use CRUD links follow this link structure :<br />
+    <code>
+        hostname/project_name/index.php?context=[CONTEXT]&action=[ACTION][&FIELD=VALUE[...]]
+    </code>
+    The context
 </p>
 
 <h4>Valid CRUD actions</h4>
@@ -52,21 +61,27 @@ To use CRUD links follow this link structure :<br />
     The valid CRUD actions that are built with API Provider are : <br />
     <ul>
         <li><code>findAll</code> : give you the possibility to fetch all rows from a table</li>
-        <li><code>find&column=?</code> : retrieve rows where a condition</li>
-        <li><code>delete&column=?</code> : delete rows where a condition</li>
+        <li><code>find&[column=?&...]</code> : retrieve rows where a condition</li>
         <li><code>count</code> : counts total rows</li>
-        <li><code>count&column=?</code> : counts rows where a condition</li>
+        <li><code>count&[column=?&...]</code> : counts rows where a condition</li>
+        <li><code>delete&column=?</code> : delete rows where a condition</li>
+        <li><code>insert&[column=?&...]</code> : inserts a row with given fields</li>
+        <li><code>update&condition=?&[column=?&...]</code> : updates a row's fields with given condition</li>
     </ul>
+
+    <i>Ps: For the update link the first param after action MUST be the conditional row such us ID then followed by other fields</i>
 </p>
 
 <h4>Examples (project devcrawlers.com/api)</h4>
 <p>
     Select all products : <code>https://devcrawlers.com/api/index.php?context=product&action=findAll</code><br/>
-    Select a product with ID : <code>https://devcrawlers.com/api/index.php?context=product&action=find&id_pro=9</code><br/>
+    Select a product with ID 7 : <code>https://devcrawlers.com/api/index.php?context=product&action=find&id_pro=7</code><br/>
     Select all products cost 100$ : <code>https://devcrawlers.com/api/index.php?context=product&action=find&price=100</code><br/>
     Delete a product : <code>https://devcrawlers.com/api/index.php?context=product&action=delete&id_pro=2</code><br/>
     Count products : <code>https://devcrawlers.com/api/index.php?context=product&action=count</code><br/>
     Count products cost 100$ : <code>https://devcrawlers.com/api/index.php?context=product&action=count&price=100</code><br/>
+    Update a product with ID 7 : <code>https://devcrawlers.com/api/index.php?context=product&action=update&id=7&price=160</code><br />
+    Insert a new product : <code>https://devcrawlers.com/api/index.php?context=product&action=insert&name=toto&price=100</code><br />
 </p>
 
 <h3>Using Preferred Handler</h3>
@@ -91,18 +106,30 @@ To use CRUD links follow this link structure :<br />
             // Create Dracula instance and execute the query method
              switch ($this->getAction()){
 
-                 case 'everything':
-                     (new Logger())->json((new Dracula())->query("SELECT * FROM product NATURAL JOIN category", null));
+                 case 'find':
+                     (new Logger())->json((new Dracula())->query("SELECT * FROM product NATURAL JOIN category"));
                      break;
 
             }
         }
 
     }
-    </pre>
-    by accessing the 'everything' action you will get the json response.<br />
-    <code>https://devcrawlers.com/api/index.php?context=mypreferredmodel&action=everything</code>
 
+    ?>
+    </pre>
+    by accessing the 'find' action you will get the json response.<br />
+    <code>https://devcrawlers.com/api/index.php?context=mypreferredmodel&action=find</code>
+    <br />
+    <br />
+    Now that you are able to create a preferred model, lets discover what it offers you : <br />
+    <ul>
+        <li><code>$this->getAction()</code> : retrieves the action provided in the link</li>
+        <li><code>$this->getParams()</code> : returns all parameters passed in the link</li>
+        <li><code>$this->getDirectory()</code> : returns the current working directory (default is preferred)</li>
+        <li><code>$this->getDracula()</code> : return Dracula object to perform MySQL requests (query() & queryUpdate())</li>
+        <li><code>$this->getContext()</code> : return current context (the name of preferred model)</li>
+        <li><code>$this->getMethod()</code> : return request method (GET or POST)</li>
+    </ul>
 </p>
 
 <br />

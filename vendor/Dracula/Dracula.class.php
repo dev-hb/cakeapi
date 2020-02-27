@@ -7,7 +7,7 @@ class Dracula
     private $blueprint;
     private $directory;
 
-    public function __construct($blueprint, $directory='models')
+    public function __construct($blueprint=null, $directory='models')
     {
         // create connection instance
         $orm = new ORM();
@@ -35,13 +35,17 @@ class Dracula
         return $this->query($sql, null);
     }
     
-    public function find($condition){
+    public function find($keys, $values){
         // implode to single string
         $fields = implode(', ', $this->getFields());
+        /// getting parameters count
+        $qm = [];
+        foreach ($keys as $k) array_push($qm, "$k=?");
+        $qm = implode(' AND ', $qm);
         // build sql request
-        $sql = "SELECT ".$fields." FROM ".strtolower($this->blueprint)." WHERE ".$condition;
+        $sql = "SELECT ".$fields." FROM ".strtolower($this->blueprint)." WHERE $qm";
         // fetch result then return in json format
-        $result = $this->query($sql, $condition);
+        $result = $this->query($sql, $values);
         if(count($result) == 1)
             return $result[0];
         if(count($result) > 1) return $result;
@@ -59,18 +63,59 @@ class Dracula
         // build sql request
         $sql = "DELETE FROM ".strtolower($this->blueprint)." WHERE ".$condition;
         // fetch result then return in json format
-        $result = $this->queryUpdate($sql, $condition);
-        return array('msg' => "Row deleted successfully");
+        $result = $this->queryUpdate($sql, null);
+        return $result ? array('msg' => "Row deleted successfully") : array('err' => "Error deleting row");
+    }
+
+    public function insert($params){
+        // build sql request
+        $fields = implode(',', $params[0]);
+        $values = $params[1];
+        /// getting parameters count
+        $qm = [];
+        foreach ($values as $v) array_push($qm, "?");
+        $qm = implode(', ', $qm);
+        /// sql to be execute
+        $sql = "INSERT INTO ".strtolower($this->blueprint)." ($fields) VALUES ($qm)";
+        // fetch result then return in json format
+        $result = $this->queryUpdate($sql, $values);
+        return $result ? array('msg' => "Row inserted successfully") : array('err' => "Error inserting row");
+    }
+
+    public function update($params, $condition){
+        $keys = $params[0];
+        $values = $params[1];
+        /// getting parameters count
+        $qm = [];
+        foreach ($keys as $k) array_push($qm, "$k = ?");
+        $qm = implode(', ', $qm);
+        /// sql to be execute
+        $sql = "UPDATE ".strtolower($this->blueprint)." SET $qm WHERE $condition[0] = ?";
+        // fetch result then return in json format
+        array_push($values, $condition[1]);
+        $result = $this->queryUpdate($sql, $values);
+        return $result ? array('msg' => "Row updated successfully") : array('err' => "Error updating row");
     }
 
     public function queryUpdate($sql, $params=null){
         $stmt = $this->connection->prepare($sql);
-        $stmt->execute();
-        return $stmt->get_result();
+        // bind params if exists
+        if($params != null){
+            $types = ""; // bind all params as string or integers
+            foreach ($params as $v) $types .= ( is_numeric($v) ? "i" : "s");
+            $stmt->bind_param($types,...$params);
+        }
+        return $stmt->execute();
     }
 
     public function query($sql, $params=null){
         $stmt = $this->connection->prepare($sql);
+        // bind params if exists
+        if($params != null){
+            $types = ""; // bind all params as string or integers
+            foreach ($params as $v) $types .= ( is_numeric($v) ? "i" : "s");
+            $stmt->bind_param($types,...$params);
+        }
         $stmt->execute();
         $rs = $stmt->get_result();
         return $rs->fetch_all(MYSQLI_ASSOC);

@@ -75,12 +75,14 @@ class ActionHandler extends Handler {
                 else{
                     if(count($params) <= 2 ) $data = array('err' => 'Specify a condition');
                     else{
-                        $condition = [];
+                        $fields = [];
+                        $values = [];
                         foreach ($params as $key=>$param)
-                            if($key != 'context' && $key != 'action')
-                                array_push($condition, "$key='$param'");
-                        $condition = count($condition) > 0 ? implode(' AND ', $condition) : "1=1";
-                        $data = $this->getDracula()->find($condition);
+                            if($key != 'context' && $key != 'action'){
+                                array_push($fields, $key);
+                                array_push($values, $param);
+                            }
+                        $data = $this->getDracula()->find($fields, $values);
                     }
                 }
                 break;
@@ -111,7 +113,14 @@ class ActionHandler extends Handler {
                 if(! $this->getPrivileges()->isGranted('insert')) $data = $this->getPermissionMessage('insert into');
                 else if($this->getMethod() == 'GET') $data = array('err' => 'Use POST request instead');
                 else{
-                    // update
+                    $fields = [];
+                    $values = [];
+                    foreach ($params as $key=>$param)
+                        if($key != 'context' && $key != 'action'){
+                            array_push($fields, $key);
+                            array_push($values, $param);
+                        }
+                    $data = $this->getDracula()->insert(array($fields, $values));
                 }
                 break;
             case 'update':
@@ -119,7 +128,18 @@ class ActionHandler extends Handler {
                 if(! $this->getPrivileges()->isGranted('update')) $data = $this->getPermissionMessage('update');
                 else if($this->getMethod() == 'GET') $data = array('err' => 'Use POST request instead');
                 else{
-                    // update
+                    $fields = [];
+                    $values = [];
+                    $i = 0;
+                    $condition = array("1", "0");
+                    foreach ($params as $key=>$param){
+                        if($i == 2) $condition = array($key, $param);
+                        if($key != 'context' && $key != 'action' && $i > 2){ // exclude where clause from link's params
+                            array_push($fields, $key);
+                            array_push($values, $param);
+                        } $i++;
+                    }
+                    $data = $this->getDracula()->update(array($fields, $values), $condition);
                 }
                 break;
             default:
