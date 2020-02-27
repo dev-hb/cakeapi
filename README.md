@@ -96,42 +96,41 @@
 <h4>Example</h4>
 <p>
     Creating a query to retrieve all products and their categories, here is how the file must look like<br />
-    <pre>
-    &lt;?php
+    <code>
+        &lt?php
 
-    class Mypreferredmodel extends PreferredHandler {
-
-        public function handle(){
-            // TODO add actions to take here (Handle both GET and POST methods)
-            // Create Dracula instance and execute the query method
-             switch ($this->getAction()){
-
-                 case 'find':
-                     (new Logger())->json((new Dracula())->query("SELECT * FROM product NATURAL JOIN category"));
-                     break;
-
+        class Mypreferredmodel extends PreferredHandler {
+    
+            public function handle(){
+                // TODO add actions to take here (Handle both GET and POST methods)
+                // Create Dracula instance and execute the query method
+                 switch ($this->getAction()){
+    
+                     case 'find':
+                         (new Logger())->json((new Dracula())->query("SELECT * FROM product NATURAL JOIN category"));
+                         break;
+    
+                }
             }
+    
         }
-
-    }
-
-    ?>
-    </pre>
-    by accessing the 'find' action you will get the json response.<br />
-    <code>https://devcrawlers.com/api/index.php?context=mypreferredmodel&action=find</code>
-    <br />
-    <br />
-    Now that you are able to create a preferred model, lets discover what it offers you : <br />
-    <ul>
-        <li><code>$this->getAction()</code> : retrieves the action provided in the link</li>
-        <li><code>$this->getParams()</code> : returns all parameters passed in the link</li>
-        <li><code>$this->getDirectory()</code> : returns the current working directory (default is preferred)</li>
-        <li><code>$this->getDracula()</code> : return Dracula object to perform MySQL requests (query() & queryUpdate())</li>
-        <li><code>$this->getContext()</code> : return current context (the name of preferred model)</li>
-        <li><code>$this->getMethod()</code> : return request method (GET or POST)</li>
-    </ul>
+    
+        ?>
+   </code>
+by accessing the 'find' action you will get the json response.<br />
+<code>https://devcrawlers.com/api/index.php?context=mypreferredmodel&action=find</code>
+<br />
+<br />
+Now that you are able to create a preferred model, lets discover what it offers you : <br />
+<ul>
+    <li><code>$this->getAction()</code> : retrieves the action provided in the link</li>
+    <li><code>$this->getParams()</code> : returns all parameters passed in the link</li>
+    <li><code>$this->getDirectory()</code> : returns the current working directory (default is preferred)</li>
+    <li><code>$this->getDracula()</code> : return Dracula object to perform MySQL requests (query() & queryUpdate())</li>
+    <li><code>$this->getContext()</code> : return current context (the name of preferred model)</li>
+    <li><code>$this->getMethod()</code> : return request method (GET or POST)</li>
+</ul>
 </p>
 
-<br />
 <hr>
 2020 &copy; Crawlers Open Source, All Rights Reserved to <a href="https://devcrawlers.com" target="_blank">DevCrawlers</a>
