@@ -160,7 +160,7 @@
     This options is the best way to retrieve find and findAll actions
 
     <code>
-        fetch("http://localhost/apiprovider/")
+        fetch(url_to_api_provider)
         .then(response => response.json())
         .then(data => {
         // data contains you json response
@@ -175,7 +175,7 @@
     To ensure that your sensitive data are transferred securely for insert, update and delete actions use POST request
 
     <code>
-        fetch("http://localhost/apiprovider/",
+        fetch(url_to_api_provider,
             {
             method: "POST",
             headers: {
