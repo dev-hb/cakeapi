@@ -117,8 +117,10 @@
     
         ?>
    </code>
-by accessing the 'find' action you will get the json response.<br />
-<code>https://devcrawlers.com/api/index.php?context=mypreferredmodel&action=find</code>
+<p>
+    By accessing the 'find' action you will get the json response.<br />
+    <code>https://devcrawlers.com/api/index.php?context=mypreferredmodel&action=find</code>
+</p>
 <br />
 <br />
 Now that you are able to create a preferred model, lets discover what it offers you : <br />
@@ -134,27 +136,28 @@ Now that you are able to create a preferred model, lets discover what it offers 
 
 <h3>How to use this provider with Javascript</h3>
 
+<p>
+    You can use this code with Javascript frameworks too such as ReactJS, VueJS, React Native, Angular ...
+</p>
+
 <h4>Using GET request</h4>
 
 <p>
     This options is the best way to retrieve find and findAll actions
 
-    <code>
         fetch("http://localhost/apiprovider/")
         .then(response => response.json())
         .then(data => {
         // data contains you json response
         })
         .catch(err => console.log(err))
-    </code>
 </p>
 
 <h4>Using POST request</h4>
 
 <p>
     To ensure that your sensitive data are transferred securely for insert, update and delete actions use POST request
-
-    <code>
+    
         fetch("http://localhost/apiprovider/",
             {
             method: "POST",
@@ -170,7 +173,6 @@ Now that you are able to create a preferred model, lets discover what it offers 
             // data contains you json response
         })
         .catch(err => console.log(err))
-    </code>
 </p>
 
 
