@@ -132,5 +132,49 @@ Now that you are able to create a preferred model, lets discover what it offers 
 </ul>
 </p>
 
+<h3>How to use this provider with Javascript</h3>
+
+<h4>Using GET request</h4>
+
+<p>
+    This options is the best way to retrieve find and findAll actions
+
+    <code>
+        fetch("http://localhost/apiprovider/")
+        .then(response => response.json())
+        .then(data => {
+        // data contains you json response
+        })
+        .catch(err => console.log(err))
+    </code>
+</p>
+
+<h4>Using POST request</h4>
+
+<p>
+    To ensure that your sensitive data are transferred securely for insert, update and delete actions use POST request
+
+    <code>
+        fetch("http://localhost/apiprovider/",
+            {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
+            },
+                body: "context=produit&action=insert&id=1137&name=Product2&price=160",
+            }
+        )
+        .then(response => response.json())
+        .then(data => {
+            // data contains you json response
+        })
+        .catch(err => console.log(err))
+    </code>
+</p>
+
+
+</p>
+
 <hr>
 2020 &copy; Crawlers Open Source, All Rights Reserved to <a href="https://devcrawlers.com" target="_blank">DevCrawlers</a>
