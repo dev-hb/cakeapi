@@ -28,7 +28,7 @@
     </ul>
     Example of use : php provider create_model Product<br />
     This will ask you fields of the model, the fields names <b>MUST</b> be the same in the database table, if you are done with fields
-    then just let the next one empty and press <code>ENTER</code> to finish the process and you will get you model ready to be used.
+    then just let the next one empty and press <code>ENTER</code> to finish the process and you will get your model ready to be used.
 </p>
 
 <h3>API Provider CRUD</h3>
@@ -69,7 +69,7 @@
         <li><code>update&condition=?&[column=?&...]</code> : updates a row's fields with given condition</li>
     </ul>
 
-    <i>Ps: For the update link the first param after action MUST be the conditional row such us ID then followed by other fields</i>
+<i>For the update link the first param after action MUST be the conditional row such us ID then followed by other fields</i> 
 </p>
 
 <h4>Examples (project devcrawlers.com/api)</h4>
@@ -145,7 +145,7 @@ Now that you are able to create a preferred model, lets discover what it offers 
 <p>
     This options is the best way to retrieve find and findAll actions
 
-        fetch("http://localhost/apiprovider/")
+        fetch(url_to_api_provider)
         .then(response => response.json())
         .then(data => {
         // data contains you json response
@@ -157,8 +157,8 @@ Now that you are able to create a preferred model, lets discover what it offers 
 
 <p>
     To ensure that your sensitive data are transferred securely for insert, update and delete actions use POST request
-    
-        fetch("http://localhost/apiprovider/",
+
+        fetch(url_to_api_provider,
             {
             method: "POST",
             headers: {
@@ -177,6 +177,27 @@ Now that you are able to create a preferred model, lets discover what it offers 
 
 
 </p>
+
+<h3>WebGet context</h3>
+<h4 id="webget">Description</h4>
+
+<p>
+    This context gives you the possibility to fetch a url and retrieve its source code.
+</p>
+
+<h4>Usage</h4>
+<p>
+    To use this context follow the following link structure :
+    <code>hostname/project_name/?context=webget&url=?</code>
+</p>
+
+<h4>Example</h4>
+
+<p>
+    Get the source code of DevCrawlers home page :<br />
+    <code>hostname/project_name/?context=webget&url=https://devcrawlers.com</code>
+</p>
+
 
 <hr>
 2020 &copy; Crawlers Open Source, All Rights Reserved to <a href="https://devcrawlers.com" target="_blank">DevCrawlers</a>

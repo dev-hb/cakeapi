@@ -15,6 +15,17 @@ class ActionHandler extends Handler {
     {
         $this->params = $params;
         $this->parseParams();
+        if(count($_POST) > 0){
+            if(! isset($_POST['context'])){
+                (new Logger())->shout("Err : No context defined");
+                exit;
+            }
+        }else{
+            if(! isset($_GET['context'])){
+                (new Logger())->shout("Err : No context defined");
+                exit;
+            }
+        }
     }
 
     /**

@@ -32,7 +32,8 @@
 <h4>Description</h4>
 <p>
     This file helps you to create models easily without writing a single line of code, that helps also to build a well formed
-    model that should not have problems during the api process.
+    model that should not have problems during the api process.<br />
+    It also has a <a href="#webget">WebGet context</a> that can retrieve websites source code and return the HTML result or even JSON response from another server.
 </p>
 <h4>Usage</h4>
 <p>
@@ -111,7 +112,7 @@
 </p>
 <h4>Usage</h4>
 <p>
-    Use the provider command line to generate a custom handler then implement handle function using cases from given action<br />
+    Use the provider command line (<code>php provider create_preferred</code>) to generate a custom handler then implement handle function using cases from given action<br />
 </p>
 <h4>Example</h4>
 <p>
@@ -196,6 +197,26 @@
 </p>
 
 
+</p>
+
+<h3>WebGet context</h3>
+<h4 id="webget">Description</h4>
+
+<p>
+    This context gives you the possibility to fetch a url and retrieve its source code.
+</p>
+
+<h4>Usage</h4>
+<p>
+    To use this context follow the following link structure :
+    <code>hostname/project_name/?context=webget&url=?</code>
+</p>
+
+<h4>Example</h4>
+
+<p>
+    Get the source code of DevCrawlers home page :<br />
+    <code>hostname/project_name/?context=webget&url=https://devcrawlers.com</code>
 </p>
 
 <br />
