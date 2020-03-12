@@ -16,6 +16,9 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: *");
 header("Access-Control-Expose-Headers: *");
 
+$errors = new Errors();
+$errors->displayErros();
+
 $action = new ActionHandler();
 // if the client requested a URL source code
 if($_GET['context'] == "webget"){

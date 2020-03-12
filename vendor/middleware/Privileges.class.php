@@ -10,7 +10,7 @@ class Privileges {
      * Privileges constructor.
      * @param $context
      */
-    public function __construct($context){
+    public function __construct($context=null){
         $this->privilege = [];
         $this->context = $context;
         $rights = file_get_contents('privileges/'.$this->context.'.priv');

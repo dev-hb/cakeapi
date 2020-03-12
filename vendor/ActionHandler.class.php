@@ -74,8 +74,8 @@ class ActionHandler extends Handler {
         // switch habitual action
         $params = $this->getParams();
         $data = "";
-        switch ($this->getAction()){
-            case 'findAll':
+        switch (strtolower($this->getAction())){
+            case 'findall':
                 // find all data from table
                 if(! $this->getPrivileges()->isGranted('select')) $data = $this->getPermissionMessage('select from');
                 else $data = $this->getDracula()->findAll();
@@ -154,6 +154,8 @@ class ActionHandler extends Handler {
                 }
                 break;
             default:
+                (new Logger())->json(['err'=>"Invalid action"]);
+                die;
         }
         (new Logger())->json($data);
     }

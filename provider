@@ -4,7 +4,7 @@ $arg = $argv[1];
 $value = isset($argv[2]) ? $argv[2] : "";
 
 
-$operations = ['create_model', 'create_preferred', 'update', 'grant', 'revoke', 'clear'];
+$operations = ['create_model', 'create_preferred', 'update', 'grant', 'revoke', 'clear', 'connection'];
 $privileges = ['select', 'insert', 'update', 'delete'];
 
 if(! file_exists('models')) mkdir('models');
@@ -82,9 +82,20 @@ if(isValide($arg, $operations)){
            }
           file_put_contents('privileges/'.strtolower($value).'.priv', implode(',', $privs));
           }
-      }else if($arg == 'update'){
-        // update local modules
-        echo "Not available yet";
+      }else if($arg == 'connection'){
+        $attrs = [];
+        $hostname = readline("Hostname (ex: localhost) : ");
+        $username = readline("Username (ex: root) : ");
+        $password = readline("Password : ");
+        $dbname = readline("Database name : ");
+        $f = fopen(".connection", 'w');
+        $connection = "hostname=".trim($hostname)."\n";
+        $connection .= "username=".trim($username)."\n";
+        $connection .= "password=".trim($password)."\n";
+        $connection .= "dbname=".trim($dbname);
+        fputs($f, $connection);
+        fclose($f);
+        echo "Connection file has been created successfully.";
     }
 }else{
     echo $arg . " is not a valid command.";
