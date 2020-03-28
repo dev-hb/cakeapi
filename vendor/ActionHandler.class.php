@@ -6,6 +6,10 @@ class ActionHandler extends Handler {
     private $method = 'GET';
     private $dracula;
     private $privileges;
+    private $input;
+
+    const POST = 'POST';
+    const GET = 'GET';
 
     /**
      * ActionHandler constructor.
@@ -26,6 +30,13 @@ class ActionHandler extends Handler {
                 exit;
             }
         }
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getInput(){
+        return file_get_contents("php://input");
     }
 
     /**
