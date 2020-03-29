@@ -169,6 +169,7 @@ class ActionHandler extends Handler {
                 die;
         }
         (new Logger())->json($data);
+        exit;
     }
 
     public function getPermissionMessage($msg){

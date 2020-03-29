@@ -2,9 +2,9 @@
 
 /**
  * @author Zakaria HBA
- * @version BETA
+ * @version 1.0
  * @license DevCrawlers's Open Source
- * @since 2020
+ * @since 2019
  * @copyright All Rights Reserved To DevCrawlers
  * @website https://devcrawlers.com
  */
@@ -21,15 +21,17 @@ $errors->displayErros();
 
 $action = new ActionHandler();
 // if the client requested a URL source code
-if($_GET['context'] == "webget"){
-    $wget = new WebGet();
-    if(! isset($_GET['url'])){
-        (new Logger())->shout("please specify a url to be fetched");
-    }else{
-        $wget->setUrl($action->getParams()['url']);
-        (new Logger())->shout($wget->read()->replace()->getResponse());
+if(isset($_GET['context'])){
+    if($_GET['context'] == "webget"){
+        $wget = new WebGet();
+        if(! isset($_GET['url'])){
+            (new Logger())->shout("please specify a url to be fetched");
+        }else{
+            $wget->setUrl($action->getParams()['url']);
+            (new Logger())->shout($wget->read()->replace()->getResponse());
+        }
+        die;
     }
-    die;
 }
 $context = $action->getContext();
 /// if the client requested for a text or JSON response
@@ -45,7 +47,7 @@ if(! file_exists('models/'.ucfirst($context).'.php')){
     $action->setDracula(new Dracula($blueprint));
     $action->setDirectory('preferred');
 }else{
-    // Check priviliges
+    // Check privileges
     $action->setPrivileges(new Privileges($context));
 }
 // Setting up method (default is GET)
