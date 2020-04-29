@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="feef969a-ac1b-47b8-8108-7c85b707e397" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1YLnqfBEmq1vBgVApZoWJZK0OIQ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/vendor" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\AppServ\www\apiprovider\vendor" />
+      <recent name="C:\AppServ\www\apiprovider" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\AppServ\www\apiprovider" />
+    </key>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="feef969a-ac1b-47b8-8108-7c85b707e397" name="Default Changelist" comment="" />
+      <created>1582730933141</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1582730933141</updated>
+      <workItem from="1582730934645" duration="12124000" />
+      <workItem from="1582832136897" duration="6927000" />
+      <workItem from="1582883750989" duration="1679000" />
+      <workItem from="1583158767446" duration="2785000" />
+      <workItem from="1583864101647" duration="2331000" />
+      <workItem from="1583916327522" duration="23000" />
+      <workItem from="1583921252033" duration="650000" />
+      <workItem from="1583969485405" duration="3600000" />
+      <workItem from="1584368077871" duration="31000" />
+      <workItem from="1584809209656" duration="334000" />
+      <workItem from="1585346765052" duration="7795000" />
+      <workItem from="1585512108921" duration="1496000" />
+      <workItem from="1585601708272" duration="30000" />
+      <workItem from="1585686246842" duration="25000" />
+      <workItem from="1586295231266" duration="3080000" />
+      <workItem from="1588184220407" duration="9132000" />
+    </task>
+    <task id="LOCAL-00001" summary="Updated permission, docs and provider file">
+      <created>1582741449405</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1582741449405</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Updated README.md">
+      <created>1582741770134</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1582741770134</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Updated ActionHandler.class.php">
+      <created>1582744712058</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1582744712058</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Added insert &amp; update CRUD functions">
+      <created>1582836341708</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1582836341708</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Updated README.md">
+      <created>1582836941576</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1582836941576</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Updated README.md">
+      <created>1582884593865</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1582884593865</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Updated README.md">
+      <created>1582884655413</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1582884655413</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Updated README.md">
+      <created>1582885414187</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1582885414187</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Added WebGet context">
+      <created>1583161542298</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1583161542299</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Added updater.bat">
+      <created>1583864258047</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1583864258047</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Added updater.bat">
+      <created>1583921266119</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1583921266119</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Updated provider">
+      <created>1583973169446</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1583973169446</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Updated Handler (added PHP IO Listener)">
+      <created>1585354020636</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1585354020636</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Fixed POST request issue">
+      <created>1585513570272</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1585513570272</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Added Tokener handler">
+      <created>1588194163402</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1588194163402</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Updated permission, docs and provider file" />
+    <MESSAGE value="Updated ActionHandler.class.php" />
+    <MESSAGE value="Added insert &amp; update CRUD functions" />
+    <MESSAGE value="Updated README.md" />
+    <MESSAGE value="Added WebGet context" />
+    <MESSAGE value="Added updater.bat" />
+    <MESSAGE value="Updated provider" />
+    <MESSAGE value="Updated Handler (added PHP IO Listener)" />
+    <MESSAGE value="Fixed POST request issue" />
+    <MESSAGE value="Added Tokener handler" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Tokener handler" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="522" y="251" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1582739145005">
+      <screen x="0" y="30" width="1536" height="834" />
+    </state>
+    <state x="522" y="251" key="#com.intellij.fileTypes.FileTypeChooser/0.30.1536.834@0.30.1536.834" timestamp="1582739145005" />
+    <state x="562" y="164" key="#com.intellij.ide.util.MemberChooser" timestamp="1588185015101">
+      <screen x="0" y="30" width="1536" height="834" />
+    </state>
+    <state x="562" y="164" key="#com.intellij.ide.util.MemberChooser/0.30.1536.834@0.30.1536.834" timestamp="1588185015101" />
+    <state x="357" y="30" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1588185954251">
+      <screen x="0" y="30" width="1536" height="834" />
+    </state>
+    <state x="357" y="30" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.30.1536.834@0.30.1536.834" timestamp="1588185954251" />
+    <state x="393" y="43" key="CommitChangelistDialog2" timestamp="1588194162309">
+      <screen x="0" y="30" width="1536" height="834" />
+    </state>
+    <state x="393" y="43" key="CommitChangelistDialog2/0.30.1536.834@0.30.1536.834" timestamp="1588194162309" />
+    <state x="481" y="164" key="MultipleFileMergeDialog" timestamp="1588194232868">
+      <screen x="0" y="30" width="1536" height="834" />
+    </state>
+    <state x="481" y="164" key="MultipleFileMergeDialog/0.30.1536.834@0.30.1536.834" timestamp="1588194232868" />
+    <state x="549" y="263" key="NewPhpClassDialog" timestamp="1583970572815">
+      <screen x="0" y="30" width="1536" height="834" />
+    </state>
+    <state x="549" y="263" key="NewPhpClassDialog/0.30.1536.834@0.30.1536.834" timestamp="1583970572815" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1583971420234">
+      <screen x="0" y="30" width="1536" height="834" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/0.30.1536.834@0.30.1536.834" timestamp="1583971420234" />
+    <state x="477" y="143" key="Vcs.Push.Dialog.v2" timestamp="1588194173302">
+      <screen x="0" y="30" width="1536" height="834" />
+    </state>
+    <state x="477" y="143" key="Vcs.Push.Dialog.v2/0.30.1536.834@0.30.1536.834" timestamp="1588194173302" />
+    <state x="93" y="123" width="1350" height="648" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1588194467485">
+      <screen x="0" y="30" width="1536" height="834" />
+    </state>
+    <state x="93" y="123" width="1350" height="648" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.30.1536.834@0.30.1536.834" timestamp="1588194467485" />
+    <state x="578" y="365" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1582744688632">
+      <screen x="0" y="30" width="1536" height="834" />
+    </state>
+    <state x="578" y="365" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.30.1536.834@0.30.1536.834" timestamp="1582744688632" />
+    <state x="498" y="240" key="git4idea.merge.GitPullDialog" timestamp="1588194205483">
+      <screen x="0" y="30" width="1536" height="834" />
+    </state>
+    <state x="498" y="240" key="git4idea.merge.GitPullDialog/0.30.1536.834@0.30.1536.834" timestamp="1588194205483" />
+    <state x="492" y="91" key="refactoring.ChangeSignatureDialog" timestamp="1582740757809">
+      <screen x="0" y="30" width="1536" height="834" />
+    </state>
+    <state x="492" y="91" key="refactoring.ChangeSignatureDialog/0.30.1536.834@0.30.1536.834" timestamp="1582740757809" />
+  </component>
+</project>
