@@ -2,7 +2,7 @@
 
 
 abstract class Token {
-    private $token;
+    protected $token;
 
     /**
      * Token constructor.

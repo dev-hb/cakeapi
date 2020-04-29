@@ -2,9 +2,9 @@
 
 $arg = $argv[1];
 $value = isset($argv[2]) ? $argv[2] : "";
+$third = isset($argv[3]) ? $argv[3] : "";
 
-
-$operations = ['create_model', 'create_preferred', 'update', 'grant', 'revoke', 'clear', 'connection'];
+$operations = ['create_model', 'create_preferred', 'update', 'grant', 'revoke', 'clear', 'connection', 'aquire', 'tokener'];
 $privileges = ['select', 'insert', 'update', 'delete'];
 
 if(! file_exists('models')) mkdir('models');
@@ -96,6 +96,85 @@ if(isValide($arg, $operations)){
         fputs($f, $connection);
         fclose($f);
         echo "Connection file has been created successfully.";
+    }else if($arg == 'aquire'){
+        if($value == 'tokener'){
+            if($third == "") echo "please specify the table name to save token info!";
+            else{
+                $table = $third;
+                file_put_contents("tokener.config", "table=$table\nactive=false");
+                file_put_contents("preferred/Authentication.php", makeAuthentication($table));
+                echo "Tokener configured successfully.\n";
+                echo "Preferred model Authentication created successfully.";
+            }
+        }else{
+            echo "Invalid functionnality or missing value!";
+        }
+    }else if($arg == 'tokener'){
+        if(file_exists(".connection")){
+            if(file_exists("tokener.config")){
+                require_once 'vendor/Dracula/ORM.class.php';
+                $conn = (new ORM())->getConnection();
+                $data = explode("\n", file_get_contents('tokener.config'));
+                 $params = [];
+                 foreach ($data as $param){
+                     if($param != ""){
+                         $c = explode("=", $param);
+                         $params[trim($c[0])] = trim($c[1]);
+                     }
+                 }
+                 $table_name = $params['table'];
+            }else {echo "Tokener configuration file not found, init with : php provider aquire tokener.\n";exit;}
+        } else {echo "Connection file not found, create it with : php provider connection.\n";exit;}
+        if($value == 'migrate'){
+            /// alter tokener table
+            $rs1 = $conn->query("ALTER TABLE $table_name ADD token TEXT");
+            $rs2 = $conn->query("ALTER TABLE $table_name ADD token_expires TIMESTAMP DEFAULT CURRENT_TIMESTAMP");
+            if($rs1) echo "token field has been created successfully in $table_name table.\n";
+            else echo "Failed to alter $table_name table, token field already altered altered, otherwise verify the table existance.\n";
+            if($rs2) echo "token_expires field has been created successfully in $table_name table.\n";
+            else echo "Failed to alter $table_name table, token_expires field already altered, otherwise verify the table existance.\n";
+        }else if($value == 'rollback'){
+            $rs1 = $conn->query("ALTER TABLE $table_name DROP token");
+            $rs2 = $conn->query("ALTER TABLE $table_name DROP token_expires");
+            if($rs1) echo "token field has been dropped successfully in $table_name table.\n";
+            else echo "Failed to alter $table_name table, token field already altered dropped, otherwise verify the table existance.\n";
+            if($rs2) echo "token_expires field has been dropped successfully in $table_name table.\n";
+            else echo "Failed to alter $table_name table, token_expires field already dropped, otherwise verify the table existance.\n";
+        }else if($value == 'up'){
+             if(file_exists('tokener.config')){
+                 $data = explode("\n", file_get_contents('tokener.config'));
+                 $params = [];
+                 foreach ($data as $param){
+                     if($param != ""){
+                         $c = explode("=", $param);
+                         $params[trim($c[0])] = trim($c[1]);
+                     }
+                 }
+                 $params['active'] = "true";
+                 $newstr = [];
+                 foreach($params as $key=>$param) array_push($newstr, implode("=", [$key, $param]));
+                 $newstr = implode("\n", $newstr);
+                 file_put_contents('tokener.config', $newstr);
+                 echo "Tokener has been activated successfully\n";
+             }else echo "Configuration file not found!\n";
+        }else if($value == 'down'){
+            if(file_exists('tokener.config')){
+                 $data = explode("\n", file_get_contents('tokener.config'));
+                 $params = [];
+                 foreach ($data as $param){
+                     if($param != ""){
+                         $c = explode("=", $param);
+                         $params[trim($c[0])] = trim($c[1]);
+                     }
+                 }
+                 $params['active'] = "false";
+                 $newstr = [];
+                 foreach($params as $key=>$param) array_push($newstr, implode("=", [$key, $param]));
+                 $newstr = implode("\n", $newstr);
+                 file_put_contents('tokener.config', $newstr);
+                 echo "Tokener has been inactivated successfully\n";
+             }else echo "Configuration file not found!\n";
+        }else echo "Invalid tokener action, valid actions are migrate/rollback.";
     }
 }else{
     echo $arg . " is not a valid command.";
@@ -116,4 +195,30 @@ function makePreferred($className){
     "// TODO add actions to take here (Handle both GET and POST methods)\n\t\t// Create Dracula instance and execute the query method\n".
     "\t\t switch (".'$this->getAction()'."){\n\n\t\t\t// TODO add code here\n\n\t\t}".
     "\n\t}\n\n}";
+}
+
+function makeAuthentication($blueprint){
+return "<?php\n\nclass Authentication extends PreferredHandler {\n\t// TODO edit this attributes\n".
+    "\tprivate ".'$username_email_field_name'."='username';\n\tprivate ".'$password_field_name'."='password';\n".
+    "\tprivate ".'$use_md5_encryption'."=false;\n".
+    "\n\n\tpublic function handle(){\n\t\t// TODO add actions to take here (Handle both GET and POST methods)\n".
+    "\t\t// Create Dracula instance and execute the query method\n\t\tswitch (".'$this->getAction()'."){\n\n".
+    "\t\t\tcase 'login':\n\n\t\t\t\t".'$username'." = ".'$this->getParams()'."[".'$this->username_email_field_name'."];\n\t\t\t\t".'$password'." = ".'$this->getParams()'."[".'$this->password_field_name'."];\n".
+    "\n\t\t\t\t".'$password'." = ".'$this->use_md5_encryption'." ? md5(".'$password'.") : ".'$password'.";\n\n".
+    "\t\t\t\t".'$user'." = (new Dracula('$blueprint'))->find([".'$this->username_email_field_name'.", ".'$this->password_field_name'."], [ ".'$username'.", ".'$password'."]);\n\n".
+    "\t\t\t\t".'$new_token'." = (new Helpers())->generate_password_hash(20, 40, 30);\n\n".
+    "\t\t\t\t".'$date_expiration'." = (new DateTime(''))->add(new DateInterval(\"P30D\"));\n".
+    "\t\t\t\t".'$date_expiration'." = ".'$date_expiration'."->format(\"Y-m-d H:i:s\");\n\n".
+    " \t\t\t\t(new Dracula('$blueprint'))->update(\n\t\t\t\t    [\n \t\t\t\t       ['token', 'token_expires'],\n".
+    "\t\t\t\t[".'$new_token'.", ".'$date_expiration'."]\n\t\t\t\t   ],\n\t\t\t\t   [".'$this->username_email_field_name'.", ".'$this->getParams()'."[".'$this->username_email_field_name'."]]);\n\n".
+    "\t\t\t\t// take the new user information with the new generated token\n".
+    "\t\t\t\t".'$user'." = (new Dracula('$blueprint'))->find([".'$this->username_email_field_name'.", ".'$this->password_field_name'."], [ ".'$username'.", ".'$password'."]);\n\n".
+    "\t\t\t\t(new Logger())->json(".'$user'.");\n\t\t\t break;\n\n\t\t\t case 'logout':\n".
+    "\t\t\t\t".'$fpm'."='token';".'$token'." = isset(".'$_GET[$fpm]'.") ? ".'$this->getParams()'."['token'] : null;".
+    "\n\t\t\t\tif(".'$token'." == null) {\n".
+    "\t\t\t\t\t(new Logger())->json(['err' => \"token not provided\"]);\n\t\t\t\t\t    exit;\n\t\t\t\t }\n\n".
+    "\t\t\t\t ".'$res'." = (new Dracula('$blueprint'))->update(\n\t\t\t\t    [\n\t\t\t\t        ['token', 'token_expires'],\n".
+    "\t\t\t\t[\"\", (new DateTime(''))->format(\"Y-m-d H:i:s\")]\n\t\t\t\t   ],\n\t\t\t\t   ['token', ".'$this->getParams()'."['token']]);\n\n".
+    "\t\t\t\tif(".'$res'.") (new Logger())->json(['msg' => 'logout successfully']);\n\t\t\t\t  else (new Logger())->json(['err' => 'invalid token']);\n\n".
+    "\t\t\tbreak;\n\n\t\t}\n\t}\n\n}";
 }

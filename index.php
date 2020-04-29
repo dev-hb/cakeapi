@@ -20,6 +20,13 @@ $errors = new Errors();
 $errors->displayErros();
 
 $action = new ActionHandler();
+
+// check if user tokener defined
+if((new Helpers())->checkTokener()){
+    $token = isset($_GET['token']) ? $action->getParams()['token'] : null;
+    (new AccessToken($action->getContext(), $token))->handle();
+}
+
 // if the client requested a URL source code
 if(isset($_GET['context'])){
     if($_GET['context'] == "webget"){
