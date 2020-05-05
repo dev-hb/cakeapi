@@ -15,7 +15,7 @@ class Privileges {
         $this->context = $context;
         $rights = file_get_contents('privileges/'.$this->context.'.priv');
         $rights = explode(',', $rights);
-        $valid_privs = ['select', 'insert', 'update', 'delete'];
+        $valid_privs = ['select', 'insert', 'update', 'delete', 'all', 'post'];
         foreach ($rights as $right){
             if(in_array($right, $valid_privs)){
                 array_push($this->privilege, $right);

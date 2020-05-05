@@ -17,7 +17,7 @@ class Dracula
     }
 
     public function getFields(){
-        require_once $this->directory."/".$this->blueprint.".php";
+        require_once $this->directory."/".(ucfirst(strtolower($this->blueprint))).".php";
         $class = new $this->blueprint;
         $vars = get_class_vars(get_class($class));
         $fields = [];

@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="feef969a-ac1b-47b8-8108-7c85b707e397" name="Default Changelist" comment="" />
+    <list default="true" id="feef969a-ac1b-47b8-8108-7c85b707e397" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/provider" beforeDir="false" afterPath="$PROJECT_DIR$/provider" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/ActionHandler.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/ActionHandler.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/Dracula/Dracula.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/Dracula/Dracula.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/middleware/Privileges.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/middleware/Privileges.class.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -73,6 +80,9 @@
       <workItem from="1585686246842" duration="25000" />
       <workItem from="1586295231266" duration="3080000" />
       <workItem from="1588184220407" duration="9132000" />
+      <workItem from="1588195590585" duration="332000" />
+      <workItem from="1588350937367" duration="42000" />
+      <workItem from="1588710976422" duration="3717000" />
     </task>
     <task id="LOCAL-00001" summary="Updated permission, docs and provider file">
       <created>1582741449405</created>
@@ -203,18 +213,18 @@
       <screen x="0" y="30" width="1536" height="834" />
     </state>
     <state x="522" y="251" key="#com.intellij.fileTypes.FileTypeChooser/0.30.1536.834@0.30.1536.834" timestamp="1582739145005" />
-    <state x="562" y="164" key="#com.intellij.ide.util.MemberChooser" timestamp="1588185015101">
+    <state x="562" y="164" key="#com.intellij.ide.util.MemberChooser" timestamp="1588715626148">
       <screen x="0" y="30" width="1536" height="834" />
     </state>
-    <state x="562" y="164" key="#com.intellij.ide.util.MemberChooser/0.30.1536.834@0.30.1536.834" timestamp="1588185015101" />
+    <state x="562" y="164" key="#com.intellij.ide.util.MemberChooser/0.30.1536.834@0.30.1536.834" timestamp="1588715626148" />
     <state x="357" y="30" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1588185954251">
       <screen x="0" y="30" width="1536" height="834" />
     </state>
     <state x="357" y="30" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.30.1536.834@0.30.1536.834" timestamp="1588185954251" />
-    <state x="393" y="43" key="CommitChangelistDialog2" timestamp="1588194162309">
+    <state x="393" y="43" key="CommitChangelistDialog2" timestamp="1588711697496">
       <screen x="0" y="30" width="1536" height="834" />
     </state>
-    <state x="393" y="43" key="CommitChangelistDialog2/0.30.1536.834@0.30.1536.834" timestamp="1588194162309" />
+    <state x="393" y="43" key="CommitChangelistDialog2/0.30.1536.834@0.30.1536.834" timestamp="1588711697496" />
     <state x="481" y="164" key="MultipleFileMergeDialog" timestamp="1588194232868">
       <screen x="0" y="30" width="1536" height="834" />
     </state>

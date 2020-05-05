@@ -7,6 +7,7 @@ class ActionHandler extends Handler {
     private $dracula;
     private $privileges;
     private $input;
+    private $use_post = false;
 
     const POST = 'POST';
     const GET = 'GET';
@@ -75,7 +76,7 @@ class ActionHandler extends Handler {
      * Parsing params to array
      */
     public function parseParams(){
-        $this->params = $this->getMethod() == 'GET' ? $_GET : $_POST;
+        $this->params = array_merge($_GET, $_POST);
     }
 
     /**
@@ -123,7 +124,7 @@ class ActionHandler extends Handler {
             case 'delete':
                 // delete with given column
                 if(! $this->getPrivileges()->isGranted('delete')) $data = $this->getPermissionMessage('delete from');
-                else if($this->getMethod() == 'GET') $data = array('err' => 'Use POST request instead');
+                else if($this->use_post && $this->getMethod() == ActionHandler::GET) $data = array('err' => 'Use POST request instead');
                 else{
                     $condition = null;
                     foreach ($params as $key=>$param) if($param != 'context' && $param != 'action') $condition = "$key='$param'";
@@ -133,7 +134,7 @@ class ActionHandler extends Handler {
             case 'insert':
                 // update given columns
                 if(! $this->getPrivileges()->isGranted('insert')) $data = $this->getPermissionMessage('insert into');
-                else if($this->getMethod() == 'GET') $data = array('err' => 'Use POST request instead');
+                else if($this->use_post && $this->getMethod() == ActionHandler::GET) $data = array('err' => 'Use POST request instead');
                 else{
                     $fields = [];
                     $values = [];
@@ -148,7 +149,7 @@ class ActionHandler extends Handler {
             case 'update':
                 // update given columns
                 if(! $this->getPrivileges()->isGranted('update')) $data = $this->getPermissionMessage('update');
-                else if($this->getMethod() == 'GET') $data = array('err' => 'Use POST request instead');
+                else if($this->use_post && $this->getMethod() == ActionHandler::GET) $data = array('err' => 'Use POST request instead');
                 else{
                     $fields = [];
                     $values = [];
@@ -190,7 +191,7 @@ class ActionHandler extends Handler {
     public function setMethod($method): void
     {
         $this->method = $method;
-        $this->setAction($this->getMethod() == 'GET' ? $_GET['action'] : $_POST['action']);
+        $this->setAction($this->getParams()['action']);
     }
 
     /**
@@ -207,6 +208,22 @@ class ActionHandler extends Handler {
     public function setPrivileges($privileges): void
     {
         $this->privileges = $privileges;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isUsePost()
+    {
+        return $this->use_post;
+    }
+
+    /**
+     * @param bool $use_post
+     */
+    public function setUsePost($use_post)
+    {
+        $this->use_post = $use_post;
     }
 
 }

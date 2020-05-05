@@ -5,7 +5,7 @@ $value = isset($argv[2]) ? $argv[2] : "";
 $third = isset($argv[3]) ? $argv[3] : "";
 
 $operations = ['create_model', 'create_preferred', 'update', 'grant', 'revoke', 'clear', 'connection', 'aquire', 'tokener'];
-$privileges = ['select', 'insert', 'update', 'delete'];
+$privileges = ['select', 'insert', 'update', 'delete', 'post'];
 
 if(! file_exists('models')) mkdir('models');
 if(! file_exists('privileges')) mkdir('privileges');

@@ -58,7 +58,11 @@ if(! file_exists('models/'.ucfirst($context).'.php')){
     $action->setPrivileges(new Privileges($context));
 }
 // Setting up method (default is GET)
-if(count($_POST) > 0) $action->setMethod('POST');
+if(in_array('post', $action->getPrivileges()->getPrivilege())){
+    $action->setUsePost(true);
+    if($_SERVER['REQUEST_METHOD'] === ActionHandler::POST) $action->setMethod('POST');
+}
+
 // Parse params to php array
 $action->parseParams();
 // handle habitual actions (findAll, find(by column), delete, update, count)
