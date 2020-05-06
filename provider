@@ -4,7 +4,7 @@ $arg = $argv[1];
 $value = isset($argv[2]) ? $argv[2] : "";
 $third = isset($argv[3]) ? $argv[3] : "";
 
-$operations = ['create_model', 'create_preferred', 'update', 'grant', 'revoke', 'clear', 'connection', 'aquire', 'tokener'];
+$operations = ['create_model', 'create_preferred', 'generate', 'update', 'grant', 'revoke', 'clear', 'connection', 'aquire', 'tokener'];
 $privileges = ['select', 'insert', 'update', 'delete', 'post'];
 
 if(! file_exists('models')) mkdir('models');
@@ -41,11 +41,47 @@ if(isValide($arg, $operations)){
             foreach($dir as $file) if($file != '.' && $file != '..') unlink('models/' . $file);
             $dir = scandir("preferred");
             foreach($dir as $file) if($file != '.' && $file != '..') unlink('preferred/' . $file);
+            $dir = scandir("privileges");
+            foreach($dir as $file) if($file != '.' && $file != '..') unlink('privileges/' . $file);
         }else{
             $dir = scandir($value);
             foreach($dir as $file) if($file != '.' && $file != '..') unlink($value.'/' . $file);
+            if($value == "models"){
+                $dir = scandir("privileges");
+                foreach($dir as $file) if($file != '.' && $file != '..') unlink('privileges/' . $file);
+            }
         }
         echo "All models have been deleted successfully!";
+    }else if($arg == 'generate'){
+        // auto generate the models from existing database (MySQL)
+        if(file_exists('.connection')){
+            require_once 'vendor/Dracula/ORM.class.php';
+            $conn = (new ORM())->getConnection();
+
+            $privs = "";
+            $is_priv = readline("Do you want to grant all privileges to all created models (yes/no :default no) : ");
+            if($is_priv == "yes") $privs = "select|insert|update|delete|post|all";
+
+            $tables = [];
+            foreach ($conn->query("SHOW TABLES")->fetch_all(MYSQLI_NUM) as $table){
+                $fields = [];
+                foreach ($conn->query("SHOW COLUMNS FROM $table[0]")->fetch_all(MYSQLI_ASSOC) as $field)
+                    array_push($fields, $field['Field']);
+                array_push($tables, ["name" => $table[0], "fields" => $fields]);
+            }
+
+            foreach ($tables as $table){
+                $blueprint = ucfirst(strtolower($table['name']));
+                $data = "<?php\n\nclass $blueprint {\n\n";
+                foreach ($table['fields'] as $field)
+                    $data .= "\tvar ".'$'."$field;\n";
+                $data .= "\n}\n";
+                file_put_contents("models/$blueprint.php", $data);
+                file_put_contents("privileges/".(strtolower($blueprint)).".priv", $privs);
+                echo "The model $blueprint has been created!\n";
+            }
+            echo "done!\n";
+        }else echo "No connection file found, create a connection using the command : php provider connection.\n";
     }else if($arg == 'grant'){
          // grant privileges to a Model
          if($value == "") echo "Please specify model name\n";

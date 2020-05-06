@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="feef969a-ac1b-47b8-8108-7c85b707e397" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/test.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/provider" beforeDir="false" afterPath="$PROJECT_DIR$/provider" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/ActionHandler.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/ActionHandler.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/Dracula/Dracula.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/Dracula/Dracula.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/middleware/Privileges.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/middleware/Privileges.class.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +79,8 @@
       <workItem from="1588184220407" duration="9132000" />
       <workItem from="1588195590585" duration="332000" />
       <workItem from="1588350937367" duration="42000" />
-      <workItem from="1588710976422" duration="3717000" />
+      <workItem from="1588710976422" duration="4377000" />
+      <workItem from="1588757510277" duration="2786000" />
     </task>
     <task id="LOCAL-00001" summary="Updated permission, docs and provider file">
       <created>1582741449405</created>
@@ -189,7 +187,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588194163402</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Fixed require issue, and POST REQUEST ISSUE">
+      <created>1588716164488</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1588716164488</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -206,7 +211,8 @@
     <MESSAGE value="Updated Handler (added PHP IO Listener)" />
     <MESSAGE value="Fixed POST request issue" />
     <MESSAGE value="Added Tokener handler" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Tokener handler" />
+    <MESSAGE value="Fixed require issue, and POST REQUEST ISSUE" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed require issue, and POST REQUEST ISSUE" />
   </component>
   <component name="WindowStateProjectService">
     <state x="522" y="251" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1582739145005">
@@ -221,10 +227,10 @@
       <screen x="0" y="30" width="1536" height="834" />
     </state>
     <state x="357" y="30" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.30.1536.834@0.30.1536.834" timestamp="1588185954251" />
-    <state x="393" y="43" key="CommitChangelistDialog2" timestamp="1588711697496">
+    <state x="393" y="43" key="CommitChangelistDialog2" timestamp="1588760312346">
       <screen x="0" y="30" width="1536" height="834" />
     </state>
-    <state x="393" y="43" key="CommitChangelistDialog2/0.30.1536.834@0.30.1536.834" timestamp="1588711697496" />
+    <state x="393" y="43" key="CommitChangelistDialog2/0.30.1536.834@0.30.1536.834" timestamp="1588760312346" />
     <state x="481" y="164" key="MultipleFileMergeDialog" timestamp="1588194232868">
       <screen x="0" y="30" width="1536" height="834" />
     </state>
@@ -233,14 +239,18 @@
       <screen x="0" y="30" width="1536" height="834" />
     </state>
     <state x="549" y="263" key="NewPhpClassDialog/0.30.1536.834@0.30.1536.834" timestamp="1583970572815" />
+    <state x="604" y="372" key="NewPhpFileDialog" timestamp="1588757527334">
+      <screen x="0" y="30" width="1536" height="834" />
+    </state>
+    <state x="604" y="372" key="NewPhpFileDialog/0.30.1536.834@0.30.1536.834" timestamp="1588757527334" />
     <state width="498" height="446" key="SwitcherDM" timestamp="1583971420234">
       <screen x="0" y="30" width="1536" height="834" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.30.1536.834@0.30.1536.834" timestamp="1583971420234" />
-    <state x="477" y="143" key="Vcs.Push.Dialog.v2" timestamp="1588194173302">
+    <state x="477" y="143" key="Vcs.Push.Dialog.v2" timestamp="1588716168926">
       <screen x="0" y="30" width="1536" height="834" />
     </state>
-    <state x="477" y="143" key="Vcs.Push.Dialog.v2/0.30.1536.834@0.30.1536.834" timestamp="1588194173302" />
+    <state x="477" y="143" key="Vcs.Push.Dialog.v2/0.30.1536.834@0.30.1536.834" timestamp="1588716168926" />
     <state x="93" y="123" width="1350" height="648" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1588194467485">
       <screen x="0" y="30" width="1536" height="834" />
     </state>
