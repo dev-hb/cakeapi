@@ -62,6 +62,12 @@ if(isValide($arg, $operations)){
             $is_priv = readline("Do you want to grant all privileges to all created models (yes/no :default no) : ");
             if($is_priv == "yes") $privs = "select|insert|update|delete|post|all";
 
+            // delete old models then generate new ones
+            $dir = scandir("models");
+            foreach($dir as $file) if($file != '.' && $file != '..') unlink('models/' . $file);
+            $dir = scandir("privileges");
+            foreach($dir as $file) if($file != '.' && $file != '..') unlink('privileges/' . $file);
+
             $tables = [];
             foreach ($conn->query("SHOW TABLES")->fetch_all(MYSQLI_NUM) as $table){
                 $fields = [];

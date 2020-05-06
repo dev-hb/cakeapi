@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="feef969a-ac1b-47b8-8108-7c85b707e397" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/test.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/provider" beforeDir="false" afterPath="$PROJECT_DIR$/provider" afterDir="false" />
     </list>
@@ -80,7 +79,8 @@
       <workItem from="1588195590585" duration="332000" />
       <workItem from="1588350937367" duration="42000" />
       <workItem from="1588710976422" duration="4377000" />
-      <workItem from="1588757510277" duration="2786000" />
+      <workItem from="1588757510277" duration="3525000" />
+      <workItem from="1588762108268" duration="48000" />
     </task>
     <task id="LOCAL-00001" summary="Updated permission, docs and provider file">
       <created>1582741449405</created>
@@ -194,7 +194,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588716164488</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Added generate command to provider command line">
+      <created>1588760344101</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1588760344101</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -212,7 +219,8 @@
     <MESSAGE value="Fixed POST request issue" />
     <MESSAGE value="Added Tokener handler" />
     <MESSAGE value="Fixed require issue, and POST REQUEST ISSUE" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed require issue, and POST REQUEST ISSUE" />
+    <MESSAGE value="Added generate command to provider command line" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added generate command to provider command line" />
   </component>
   <component name="WindowStateProjectService">
     <state x="522" y="251" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1582739145005">
@@ -227,10 +235,10 @@
       <screen x="0" y="30" width="1536" height="834" />
     </state>
     <state x="357" y="30" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.30.1536.834@0.30.1536.834" timestamp="1588185954251" />
-    <state x="393" y="43" key="CommitChangelistDialog2" timestamp="1588760312346">
+    <state x="393" y="43" key="CommitChangelistDialog2" timestamp="1588760342489">
       <screen x="0" y="30" width="1536" height="834" />
     </state>
-    <state x="393" y="43" key="CommitChangelistDialog2/0.30.1536.834@0.30.1536.834" timestamp="1588760312346" />
+    <state x="393" y="43" key="CommitChangelistDialog2/0.30.1536.834@0.30.1536.834" timestamp="1588760342489" />
     <state x="481" y="164" key="MultipleFileMergeDialog" timestamp="1588194232868">
       <screen x="0" y="30" width="1536" height="834" />
     </state>
@@ -247,10 +255,10 @@
       <screen x="0" y="30" width="1536" height="834" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.30.1536.834@0.30.1536.834" timestamp="1583971420234" />
-    <state x="477" y="143" key="Vcs.Push.Dialog.v2" timestamp="1588716168926">
+    <state x="477" y="143" key="Vcs.Push.Dialog.v2" timestamp="1588760354150">
       <screen x="0" y="30" width="1536" height="834" />
     </state>
-    <state x="477" y="143" key="Vcs.Push.Dialog.v2/0.30.1536.834@0.30.1536.834" timestamp="1588716168926" />
+    <state x="477" y="143" key="Vcs.Push.Dialog.v2/0.30.1536.834@0.30.1536.834" timestamp="1588760354150" />
     <state x="93" y="123" width="1350" height="648" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1588194467485">
       <screen x="0" y="30" width="1536" height="834" />
     </state>
