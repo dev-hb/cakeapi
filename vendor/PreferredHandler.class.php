@@ -6,7 +6,7 @@ class PreferredHandler extends ActionHandler {
     public function __construct($params = null){
         parent::__construct($params);
         if(! file_exists('preferred/'.ucfirst($this->getContext()).'.php')){
-            (new Logger())->json(array('err' => 'Context not found'));
+            (new Logger())->json(null, 404, 'Context not found');
             exit;
         }
     }

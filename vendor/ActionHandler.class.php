@@ -2,9 +2,7 @@
 
 
 class ActionHandler extends Handler {
-    private $params;
     private $method = 'GET';
-    private $dracula;
     private $privileges;
     private $input;
     private $use_post = false;
@@ -22,12 +20,12 @@ class ActionHandler extends Handler {
         $this->parseParams();
         if(count($_POST) > 0){
             if(! isset($_POST['context'])){
-                (new Logger())->shout("Err : No context defined");
+                (new Logger())->json(null, 404, "No context defined");
                 exit;
             }
         }else{
             if(! isset($_GET['context'])){
-                (new Logger())->shout("Err : No context defined");
+                (new Logger())->json(null, 404, "No context defined");
                 exit;
             }
         }
@@ -41,42 +39,21 @@ class ActionHandler extends Handler {
     }
 
     /**
-     * @return null
+     * @return false|string
      */
-    public function getParams()
-    {
-        return $this->params;
-    }
-
-    /**
-     * @param null $params
-     */
-    public function setParams($params): void
-    {
-        $this->params = $params;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDracula()
-    {
-        return $this->dracula;
-    }
-
-    /**
-     * @param mixed $dracula
-     */
-    public function setDracula($dracula): void
-    {
-        $this->dracula = $dracula;
+    public function getJsonInput(){
+        return json_decode($this->getInput());
     }
 
     /**
      * Parsing params to array
      */
     public function parseParams(){
-        $this->params = array_merge($_GET, $_POST);
+        $input = $this->getJsonInput();
+        if($input != null)
+            $this->params = array_merge($_GET, $_POST, $input);
+        else
+            $this->params = array_merge($_GET, $_POST);
     }
 
     /**
@@ -96,7 +73,7 @@ class ActionHandler extends Handler {
                 // find data with given column
                 if(! $this->getPrivileges()->isGranted('select')) $data = $this->getPermissionMessage('select from');
                 else{
-                    if(count($params) <= 2 ) $data = array('err' => 'Specify a condition');
+                    if(count($params) <= 2 ) $data = $this->jsonForm(null, 404, 'Specify a condition');
                     else{
                         $fields = [];
                         $values = [];
@@ -124,7 +101,7 @@ class ActionHandler extends Handler {
             case 'delete':
                 // delete with given column
                 if(! $this->getPrivileges()->isGranted('delete')) $data = $this->getPermissionMessage('delete from');
-                else if($this->use_post && $this->getMethod() == ActionHandler::GET) $data = array('err' => 'Use POST request instead');
+                else if($this->use_post && $this->getMethod() == ActionHandler::GET) $data = $this->jsonForm(null, 403, 'Use POST request instead');
                 else{
                     $condition = null;
                     foreach ($params as $key=>$param) if($param != 'context' && $param != 'action') $condition = "$key='$param'";
@@ -134,7 +111,7 @@ class ActionHandler extends Handler {
             case 'insert':
                 // update given columns
                 if(! $this->getPrivileges()->isGranted('insert')) $data = $this->getPermissionMessage('insert into');
-                else if($this->use_post && $this->getMethod() == ActionHandler::GET) $data = array('err' => 'Use POST request instead');
+                else if($this->use_post && $this->getMethod() == ActionHandler::GET) $data = $this->jsonForm(null, 403, 'Use POST request instead');
                 else{
                     $fields = [];
                     $values = [];
@@ -149,7 +126,7 @@ class ActionHandler extends Handler {
             case 'update':
                 // update given columns
                 if(! $this->getPrivileges()->isGranted('update')) $data = $this->getPermissionMessage('update');
-                else if($this->use_post && $this->getMethod() == ActionHandler::GET) $data = array('err' => 'Use POST request instead');
+                else if($this->use_post && $this->getMethod() == ActionHandler::GET) $data = $this->jsonForm(null, 403, 'Use POST request instead');
                 else{
                     $fields = [];
                     $values = [];
@@ -166,15 +143,20 @@ class ActionHandler extends Handler {
                 }
                 break;
             default:
-                (new Logger())->json(['err'=>"Invalid action"]);
+                (new Logger())->json(null, 403, "Invalid action");
                 die;
         }
-        (new Logger())->json($data);
+        (new Logger())->json($data, 200, "OK");
         exit;
     }
 
+    public function jsonForm($data, $code=200, $status="OK"){
+        return array("status" => $status, "code" => $code, "body" => $data);
+    }
+
     public function getPermissionMessage($msg){
-        return array('err' => 'You don\'t have permission to '.$msg.' this resource');
+        echo json_encode(["status" => 'You don\'t have permission to '.$msg.' this resource', "code" => 403, "body" => null]);
+        exit;
     }
 
     /**

@@ -2,9 +2,10 @@
 
 abstract class Handler {
 
-    private $action;
-    private $dracula;
-    private $directory='models';
+    protected $action;
+    protected $dracula;
+    protected $directory='models';
+    protected $params;
 
     public function __construct($dracula = null, $action = null){
         $this->action = $action;
@@ -46,27 +47,16 @@ abstract class Handler {
 
     public function getContext(){
         $context = "";
-        if(count($_POST) > 0){
-            if(! isset($_POST['context'])){
-                (new Logger())->shout("Err : No context defined");
-                exit;
-            }elseif(! isset($_POST['action'])){
-                (new Logger())->shout("Err : No action defined");
-                exit;
-            }
-            $context = $_POST['context'];
-            $this->setAction($_POST['action']);
-        }else{
-            if(! isset($_GET['context'])){
-                (new Logger())->shout("Err : No context defined");
-                exit;
-            }elseif(! isset($_GET['action'])){
-                (new Logger())->shout("Err : No action defined");
-                exit;
-            }
-            $this->setAction($_GET['action']);
-            $context = $_GET['context'];
+        if(! array_key_exists('context', $this->getParams())){
+            (new Logger())->json(null, 404, "No context defined");
+            exit;
+        }elseif(! array_key_exists('action', $this->getParams())){
+            (new Logger())->json(null, 404, "No action defined");
+            exit;
         }
+        $context = $this->getParams()['context'];
+        $this->setAction($this->getParams()['action']);
+
         return trim(htmlentities($context));
     }
 
@@ -85,6 +75,22 @@ abstract class Handler {
     {
         $this->directory = $directory;
         $this->getDracula()->setDirectory($this->getDirectory());
+    }
+
+    /**
+     * @return null
+     */
+    public function getParams()
+    {
+        return $this->params;
+    }
+
+    /**
+     * @param null $params
+     */
+    public function setParams($params): void
+    {
+        $this->params = $params;
     }
 
 }
