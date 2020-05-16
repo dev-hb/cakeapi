@@ -49,11 +49,7 @@ class Dracula
         if(count($result) == 1)
             return $result[0];
         if(count($result) > 1) return $result;
-        return $this->jsonForm(null, 204, "No data found");
-    }
-
-    public function jsonForm($data, $code=200, $status="OK"){
-
+        return null;
     }
 
     public function count($condition){
@@ -66,10 +62,9 @@ class Dracula
     public function delete($condition){
         // build sql request
         $sql = "DELETE FROM ".strtolower($this->blueprint)." WHERE ".$condition;
-        // fetch result then return in json format
+        // fetch result then return in status code
         $result = $this->queryUpdate($sql, null);
-        return $result ? $this->jsonForm(null, 200, "Row deleted successfully"):
-            $this->jsonForm(null, 404, "Error deleting row");
+        return $result ? 200: null;
     }
 
     public function insert($params){
@@ -84,8 +79,7 @@ class Dracula
         $sql = "INSERT INTO ".strtolower($this->blueprint)." ($fields) VALUES ($qm)";
         // fetch result then return in json format
         $result = $this->queryUpdate($sql, $values);
-        return $result ? $this->jsonForm(null, 200, "Row inserted successfully"):
-            $this->jsonForm(null, 404, "Error inserting row");
+        return $result ? $this->find($params[0], $params[1]): null;
     }
 
     public function update($params, $condition){
@@ -100,8 +94,7 @@ class Dracula
         // fetch result then return in json format
         array_push($values, $condition[1]);
         $result = $this->queryUpdate($sql, $values);
-        return $result ? $this->jsonForm(null, 200, "Row updated successfully"):
-            $this->jsonForm(null, 404, "Error updating row");
+        return $result ? 200: null;
     }
 
     public function queryUpdate($sql, $params=null){
