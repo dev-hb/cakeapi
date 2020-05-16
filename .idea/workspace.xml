@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="feef969a-ac1b-47b8-8108-7c85b707e397" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/vendor/Binder/Binder.class.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/ActionHandler.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/ActionHandler.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/Dracula/Dracula.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/Dracula/Dracula.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/Handler.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/Handler.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/Logger.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/Logger.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/PreferredHandler.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/PreferredHandler.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/updater.bat" beforeDir="false" afterPath="$PROJECT_DIR$/updater.bat" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +88,7 @@
       <workItem from="1588920625249" duration="208000" />
       <workItem from="1589061180831" duration="9000" />
       <workItem from="1589219135771" duration="2474000" />
-      <workItem from="1589658940028" duration="3096000" />
+      <workItem from="1589658940028" duration="4092000" />
     </task>
     <task id="LOCAL-00001" summary="Updated permission, docs and provider file">
       <created>1582741449405</created>
@@ -222,7 +216,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588762170840</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Updated Logger and added Binder.class.php">
+      <created>1589662085025</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1589662085025</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -242,7 +243,9 @@
     <MESSAGE value="Fixed require issue, and POST REQUEST ISSUE" />
     <MESSAGE value="Added generate command to provider command line" />
     <MESSAGE value="[edit] Added generate command to provider command line" />
-    <option name="LAST_COMMIT_MESSAGE" value="[edit] Added generate command to provider command line" />
+    <MESSAGE value="Updated Logger and added Binder.class.php" />
+    <MESSAGE value="Updated updater.bat" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated updater.bat" />
   </component>
   <component name="WindowStateProjectService">
     <state x="522" y="251" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1582739145005">
@@ -257,10 +260,10 @@
       <screen x="0" y="30" width="1536" height="834" />
     </state>
     <state x="357" y="30" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.30.1536.834@0.30.1536.834" timestamp="1589219371794" />
-    <state x="393" y="43" key="CommitChangelistDialog2" timestamp="1588762169068">
+    <state x="393" y="43" key="CommitChangelistDialog2" timestamp="1589663186157">
       <screen x="0" y="30" width="1536" height="834" />
     </state>
-    <state x="393" y="43" key="CommitChangelistDialog2/0.30.1536.834@0.30.1536.834" timestamp="1588762169068" />
+    <state x="393" y="43" key="CommitChangelistDialog2/0.30.1536.834@0.30.1536.834" timestamp="1589663186157" />
     <state x="481" y="164" key="MultipleFileMergeDialog" timestamp="1588194232868">
       <screen x="0" y="30" width="1536" height="834" />
     </state>
@@ -277,10 +280,10 @@
       <screen x="0" y="30" width="1536" height="834" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.30.1536.834@0.30.1536.834" timestamp="1583971420234" />
-    <state x="477" y="143" key="Vcs.Push.Dialog.v2" timestamp="1588762182360">
+    <state x="477" y="143" key="Vcs.Push.Dialog.v2" timestamp="1589662090677">
       <screen x="0" y="30" width="1536" height="834" />
     </state>
-    <state x="477" y="143" key="Vcs.Push.Dialog.v2/0.30.1536.834@0.30.1536.834" timestamp="1588762182360" />
+    <state x="477" y="143" key="Vcs.Push.Dialog.v2/0.30.1536.834@0.30.1536.834" timestamp="1589662090677" />
     <state x="93" y="123" width="1350" height="648" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1588194467485">
       <screen x="0" y="30" width="1536" height="834" />
     </state>
