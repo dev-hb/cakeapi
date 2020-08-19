@@ -28,6 +28,7 @@ class ORM {
             );
             exit;
         }
+        $this->connection->set_charset('utf8');
         return $this->connection;
     }
 

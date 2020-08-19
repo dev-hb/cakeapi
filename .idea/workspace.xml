@@ -19,14 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="feef969a-ac1b-47b8-8108-7c85b707e397" name="Default Changelist" comment="">
+    <list default="true" id="feef969a-ac1b-47b8-8108-7c85b707e397" name="Default Changelist" comment="Fix: Binder-&gt;bind() issue">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/provider" beforeDir="false" afterPath="$PROJECT_DIR$/provider" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/Binder/Binder.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/Binder/Binder.class.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/Dracula/Orm.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/Dracula/Orm.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/Logger.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/Logger.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/PreferredHandler.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/PreferredHandler.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/middleware/AccessToken.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/middleware/AccessToken.class.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +99,7 @@
       <workItem from="1591888030052" duration="1128000" />
       <workItem from="1594553922518" duration="1955000" />
       <workItem from="1594586697895" duration="13000" />
-      <workItem from="1597878829613" duration="2316000" />
+      <workItem from="1597878829613" duration="2651000" />
     </task>
     <task id="LOCAL-00001" summary="Updated permission, docs and provider file">
       <created>1582741449405</created>
@@ -253,7 +248,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589671890035</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Fix: Binder-&gt;bind() issue">
+      <created>1597881215166</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1597881215167</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -287,7 +289,8 @@
     <MESSAGE value="Updated Logger and added Binder.class.php" />
     <MESSAGE value="Updated updater.bat" />
     <MESSAGE value="Return created row after insert or update actions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Return created row after insert or update actions" />
+    <MESSAGE value="Fix: Binder-&gt;bind() issue" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix: Binder-&gt;bind() issue" />
   </component>
   <component name="WindowStateProjectService">
     <state x="562" y="164" key="#com.intellij.ide.util.MemberChooser" timestamp="1591888306812">
@@ -306,10 +309,10 @@
       <screen x="0" y="30" width="1536" height="834" />
     </state>
     <state x="604" y="150" key="RollbackChangesDialog/0.30.1536.834@0.30.1536.834" timestamp="1597879034108" />
-    <state x="477" y="143" key="Vcs.Push.Dialog.v2" timestamp="1589671899971">
+    <state x="477" y="143" key="Vcs.Push.Dialog.v2" timestamp="1597881226286">
       <screen x="0" y="30" width="1536" height="834" />
     </state>
-    <state x="477" y="143" key="Vcs.Push.Dialog.v2/0.30.1536.834@0.30.1536.834" timestamp="1589671899971" />
+    <state x="477" y="143" key="Vcs.Push.Dialog.v2/0.30.1536.834@0.30.1536.834" timestamp="1597881226286" />
     <state x="506" y="236" key="git4idea.merge.GitPullDialog" timestamp="1597879022349">
       <screen x="0" y="30" width="1536" height="834" />
     </state>
