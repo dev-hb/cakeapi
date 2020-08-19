@@ -1,10 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="feef969a-ac1b-47b8-8108-7c85b707e397" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/ActionHandler.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/ActionHandler.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/Dracula/Dracula.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/Dracula/Dracula.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/provider" beforeDir="false" afterPath="$PROJECT_DIR$/provider" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/Binder/Binder.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/Binder/Binder.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/Dracula/Orm.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/Dracula/Orm.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/Logger.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/Logger.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/PreferredHandler.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/PreferredHandler.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/middleware/AccessToken.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/middleware/AccessToken.class.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,9 +34,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ComposerSettings">
-    <execution>
-      <executable />
-    </execution>
+    <execution />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -22,13 +42,14 @@
   <component name="ProjectId" id="1YLnqfBEmq1vBgVApZoWJZK0OIQ" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/vendor" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -38,18 +59,6 @@
       <recent name="C:\AppServ\www\apiprovider\vendor" />
       <recent name="C:\AppServ\www\apiprovider" />
     </key>
-  </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -90,7 +99,12 @@
       <workItem from="1589061180831" duration="9000" />
       <workItem from="1589219135771" duration="2474000" />
       <workItem from="1589658940028" duration="4201000" />
-      <workItem from="1589668149192" duration="3701000" />
+      <workItem from="1589668149192" duration="4852000" />
+      <workItem from="1589927593350" duration="52000" />
+      <workItem from="1591888030052" duration="1128000" />
+      <workItem from="1594553922518" duration="1955000" />
+      <workItem from="1594586697895" duration="13000" />
+      <workItem from="1597878829613" duration="2316000" />
     </task>
     <task id="LOCAL-00001" summary="Updated permission, docs and provider file">
       <created>1582741449405</created>
@@ -232,11 +246,29 @@
       <option name="project" value="LOCAL" />
       <updated>1589663188957</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Return created row after insert or update actions">
+      <created>1589671890035</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1589671890035</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Updated permission, docs and provider file" />
@@ -254,64 +286,33 @@
     <MESSAGE value="[edit] Added generate command to provider command line" />
     <MESSAGE value="Updated Logger and added Binder.class.php" />
     <MESSAGE value="Updated updater.bat" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated updater.bat" />
+    <MESSAGE value="Return created row after insert or update actions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Return created row after insert or update actions" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="522" y="251" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1582739145005">
+    <state x="562" y="164" key="#com.intellij.ide.util.MemberChooser" timestamp="1591888306812">
       <screen x="0" y="30" width="1536" height="834" />
     </state>
-    <state x="522" y="251" key="#com.intellij.fileTypes.FileTypeChooser/0.30.1536.834@0.30.1536.834" timestamp="1582739145005" />
-    <state x="562" y="164" key="#com.intellij.ide.util.MemberChooser" timestamp="1588830235379">
+    <state x="562" y="164" key="#com.intellij.ide.util.MemberChooser/0.30.1536.834@0.30.1536.834" timestamp="1591888306812" />
+    <state x="393" y="43" key="CommitChangelistDialog2" timestamp="1589671885982">
       <screen x="0" y="30" width="1536" height="834" />
     </state>
-    <state x="562" y="164" key="#com.intellij.ide.util.MemberChooser/0.30.1536.834@0.30.1536.834" timestamp="1588830235379" />
-    <state x="357" y="30" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1589219371794">
+    <state x="393" y="43" key="CommitChangelistDialog2/0.30.1536.834@0.30.1536.834" timestamp="1589671885982" />
+    <state x="549" y="263" key="NewPhpClassDialog" timestamp="1591888065299">
       <screen x="0" y="30" width="1536" height="834" />
     </state>
-    <state x="357" y="30" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.30.1536.834@0.30.1536.834" timestamp="1589219371794" />
-    <state x="393" y="43" key="CommitChangelistDialog2" timestamp="1589663186157">
+    <state x="549" y="263" key="NewPhpClassDialog/0.30.1536.834@0.30.1536.834" timestamp="1591888065299" />
+    <state x="604" y="150" key="RollbackChangesDialog" timestamp="1597879034108">
       <screen x="0" y="30" width="1536" height="834" />
     </state>
-    <state x="393" y="43" key="CommitChangelistDialog2/0.30.1536.834@0.30.1536.834" timestamp="1589663186157" />
-    <state x="481" y="164" key="MultipleFileMergeDialog" timestamp="1588194232868">
+    <state x="604" y="150" key="RollbackChangesDialog/0.30.1536.834@0.30.1536.834" timestamp="1597879034108" />
+    <state x="477" y="143" key="Vcs.Push.Dialog.v2" timestamp="1589671899971">
       <screen x="0" y="30" width="1536" height="834" />
     </state>
-    <state x="481" y="164" key="MultipleFileMergeDialog/0.30.1536.834@0.30.1536.834" timestamp="1588194232868" />
-    <state x="549" y="263" key="NewPhpClassDialog" timestamp="1588824899819">
+    <state x="477" y="143" key="Vcs.Push.Dialog.v2/0.30.1536.834@0.30.1536.834" timestamp="1589671899971" />
+    <state x="506" y="236" key="git4idea.merge.GitPullDialog" timestamp="1597879022349">
       <screen x="0" y="30" width="1536" height="834" />
     </state>
-    <state x="549" y="263" key="NewPhpClassDialog/0.30.1536.834@0.30.1536.834" timestamp="1588824899819" />
-    <state x="604" y="372" key="NewPhpFileDialog" timestamp="1588757527334">
-      <screen x="0" y="30" width="1536" height="834" />
-    </state>
-    <state x="604" y="372" key="NewPhpFileDialog/0.30.1536.834@0.30.1536.834" timestamp="1588757527334" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1583971420234">
-      <screen x="0" y="30" width="1536" height="834" />
-    </state>
-    <state width="498" height="446" key="SwitcherDM/0.30.1536.834@0.30.1536.834" timestamp="1583971420234" />
-    <state x="477" y="143" key="Vcs.Push.Dialog.v2" timestamp="1589663196349">
-      <screen x="0" y="30" width="1536" height="834" />
-    </state>
-    <state x="477" y="143" key="Vcs.Push.Dialog.v2/0.30.1536.834@0.30.1536.834" timestamp="1589663196349" />
-    <state x="93" y="123" width="1350" height="648" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1588194467485">
-      <screen x="0" y="30" width="1536" height="834" />
-    </state>
-    <state x="93" y="123" width="1350" height="648" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.30.1536.834@0.30.1536.834" timestamp="1588194467485" />
-    <state x="578" y="365" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1582744688632">
-      <screen x="0" y="30" width="1536" height="834" />
-    </state>
-    <state x="578" y="365" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.30.1536.834@0.30.1536.834" timestamp="1582744688632" />
-    <state x="498" y="240" key="git4idea.merge.GitPullDialog" timestamp="1588194205483">
-      <screen x="0" y="30" width="1536" height="834" />
-    </state>
-    <state x="498" y="240" key="git4idea.merge.GitPullDialog/0.30.1536.834@0.30.1536.834" timestamp="1588194205483" />
-    <state x="492" y="91" key="refactoring.ChangeSignatureDialog" timestamp="1582740757809">
-      <screen x="0" y="30" width="1536" height="834" />
-    </state>
-    <state x="492" y="91" key="refactoring.ChangeSignatureDialog/0.30.1536.834@0.30.1536.834" timestamp="1582740757809" />
-    <state x="431" y="186" width="672" height="678" key="search.everywhere.popup" timestamp="1588829829039">
-      <screen x="0" y="30" width="1536" height="834" />
-    </state>
-    <state x="431" y="186" width="672" height="678" key="search.everywhere.popup/0.30.1536.834@0.30.1536.834" timestamp="1588829829039" />
+    <state x="506" y="236" key="git4idea.merge.GitPullDialog/0.30.1536.834@0.30.1536.834" timestamp="1597879022349" />
   </component>
 </project>

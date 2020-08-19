@@ -16,7 +16,7 @@ class AccessToken extends Token {
      * @param $dracula object
      */
     public function __construct($context, $token){
-        /// TODO add access token credentials and rules
+        /// TODO add access token credentials and rules (change authorised contexts in $this->valid_contexts)
         $this->token = $token;
         $this->blueprint = (new Helpers())->getTokenerConfig()['table'];
         $this->dracula = new Dracula($this->blueprint);
@@ -24,7 +24,7 @@ class AccessToken extends Token {
         $this->context = $context;
 
         if($token == null && ! in_array($context, $this->valid_contexts)){
-            (new Logger())->json(['err' => "token not provided"]);
+            (new Logger())->json("token not provided");
             exit;
         }
     }
@@ -38,13 +38,13 @@ class AccessToken extends Token {
 
         $token = $this->getToken();
         if($token == null){
-            (new Logger())->json(['err' => 'no token provided']);
+            (new Logger())->json('no token provided');
             exit;
         }
         $blueprint = $this->getBlueprint();
         $is_valid = $this->dracula->query("SELECT * FROM $blueprint WHERE token=? && token_expires>CURRENT_TIMESTAMP", [$this->token]);
         if(! $is_valid){
-            (new Logger())->json(['err' => 'invalid token']);
+            (new Logger())->json('invalid token');
             exit;
         }
     }

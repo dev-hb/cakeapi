@@ -17,7 +17,17 @@ class ORM {
             $this->connection = new mysqli($credentials['hostname'], $credentials['username'], $credentials['password'], $credentials['dbname']);
             
         }
-        
+
+        if($this->connection->connect_errno != 0) {
+            var_dump(
+                [
+                    "body" => "Database not connected : " . $this->connection->connect_error,
+                    "code" => 401,
+                    "status" => "Connection Error"
+                ]
+            );
+            exit;
+        }
         return $this->connection;
     }
 

@@ -4,7 +4,7 @@ $arg = $argv[1];
 $value = isset($argv[2]) ? $argv[2] : "";
 $third = isset($argv[3]) ? $argv[3] : "";
 
-$operations = ['create_model', 'create_preferred', 'generate', 'update', 'grant', 'revoke', 'clear', 'connection', 'aquire', 'tokener'];
+$operations = ['create_model', 'create_preferred', 'generate', 'update', 'grant', 'revoke', 'clear', 'connection', 'require', 'tokener'];
 $privileges = ['select', 'insert', 'update', 'delete', 'post'];
 
 if(! file_exists('models')) mkdir('models');
@@ -138,7 +138,7 @@ if(isValide($arg, $operations)){
         fputs($f, $connection);
         fclose($f);
         echo "Connection file has been created successfully.";
-    }else if($arg == 'aquire'){
+    }else if($arg == 'require'){
         if($value == 'tokener'){
             if($third == "") echo "please specify the table name to save token info!";
             else{
@@ -165,7 +165,7 @@ if(isValide($arg, $operations)){
                      }
                  }
                  $table_name = $params['table'];
-            }else {echo "Tokener configuration file not found, init with : php provider aquire tokener.\n";exit;}
+            }else {echo "Tokener configuration file not found, init with : php provider require tokener.\n";exit;}
         } else {echo "Connection file not found, create it with : php provider connection.\n";exit;}
         if($value == 'migrate'){
             /// alter tokener table
@@ -241,8 +241,9 @@ function makePreferred($className){
 
 function makeAuthentication($blueprint){
 return "<?php\n\nclass Authentication extends PreferredHandler {\n\t// TODO edit this attributes\n".
-    "\tprivate ".'$username_email_field_name'."='username';\n\tprivate ".'$password_field_name'."='password';\n".
-    "\tprivate ".'$use_md5_encryption'."=false;\n".
+    "\tprivate ".'$username_email_field_name'." = 'username';\n\tprivate ".'$password_field_name'." = 'password';\n".
+    "\tprivate ".'$use_md5_encryption'." = false;\n".
+    "\tprivate ".'$register_fields'." = [];\n".
     "\n\n\tpublic function handle(){\n\t\t// TODO add actions to take here (Handle both GET and POST methods)\n".
     "\t\t// Create Dracula instance and execute the query method\n\t\tswitch (".'$this->getAction()'."){\n\n".
     "\t\t\tcase 'login':\n\n\t\t\t\t".'$username'." = ".'$this->getParams()'."[".'$this->username_email_field_name'."];\n\t\t\t\t".'$password'." = ".'$this->getParams()'."[".'$this->password_field_name'."];\n".
@@ -255,7 +256,21 @@ return "<?php\n\nclass Authentication extends PreferredHandler {\n\t// TODO edit
     "\t\t\t\t[".'$new_token'.", ".'$date_expiration'."]\n\t\t\t\t   ],\n\t\t\t\t   [".'$this->username_email_field_name'.", ".'$this->getParams()'."[".'$this->username_email_field_name'."]]);\n\n".
     "\t\t\t\t// take the new user information with the new generated token\n".
     "\t\t\t\t".'$user'." = (new Dracula('$blueprint'))->find([".'$this->username_email_field_name'.", ".'$this->password_field_name'."], [ ".'$username'.", ".'$password'."]);\n\n".
-    "\t\t\t\t(new Logger())->json(".'$user'.");\n\t\t\t break;\n\n\t\t\t case 'logout':\n".
+    "\t\t\t\t(new Logger())->json(".'$user'.");\n\t\t\t break;\n\n".
+    "\t\t\t case 'register':\n".
+    "\t\t\t\t$"."username = $"."this->getParams()[$"."this->username_email_field_name];\n".
+    "\t\t\t\t$"."password = $"."this->getParams()[$"."this->password_field_name];\n\n".
+    "\t\t\t\t$"."password = $"."this->use_md5_encryption ? md5($"."password) : $"."password;\n\n".
+    "\t\t\t\t$"."vals = [$"."username, $"."password];\n".
+    "\t\t\t\tforeach($"."this->register_fields as $"."f) $"."vals[] = $"."this->getParams()[$"."f];\n".
+    "\t\t\t\t$"."keys = array_merge([$"."this->username_email_field_name, $"."this->password_field_name], $"."this->register_fields);\n".
+    "\t\t\t\t$"."user = (new Dracula('Users'))->insert([$"."keys, $"."vals]);\n\n".
+    "\t\t\t\tif($"."user != null){\n".
+        "\t\t\t\t\t$"."this->setAction('login');\n".
+        "\t\t\t\t\t$"."this->handle();\n".
+    "\t\t\t\t}else (new Logger())->json([\"err\" => \"duplicate entries\"], 200, \"Fail\");\n".
+    "\n\t\t\t break;\n\n".
+    "\t\t\t case 'logout':\n".
     "\t\t\t\t".'$fpm'."='token';".'$token'." = isset(".'$_GET[$fpm]'.") ? ".'$this->getParams()'."['token'] : null;".
     "\n\t\t\t\tif(".'$token'." == null) {\n".
     "\t\t\t\t\t(new Logger())->json(['err' => \"token not provided\"]);\n\t\t\t\t\t    exit;\n\t\t\t\t }\n\n".

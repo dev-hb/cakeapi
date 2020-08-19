@@ -3,7 +3,7 @@
 
 class Binder {
     private $objector; // blueprints to be merged
-    private $criteria; // fields criteria
+    private $criteria = []; // fields criteria
     private $result; // returned result MySQL cursor
     private $condition = null; // root blueprint's condition
 
@@ -34,10 +34,10 @@ class Binder {
     }
 
     /**
-     * @param $c
+     * @param array $c
      * @return $this
      */
-    public function criteria($c){
+    public function criteria(array $c){
         $this->criteria = $c;
         return $this;
     }
@@ -80,7 +80,7 @@ class Binder {
                         array_push($keys, $key);
                     // bind has many
                     if(count($this->getCriteria()) == 0){
-                        (new Logger())->json(['err', 'please provider criteria fields']);
+                        (new Logger())->json('please provider criteria fields');
                         exit;
                     } // check if the criteria presented is a single column, if its the case then duplicate te column
                     if(count($this->getCriteria()) <= 1) $this->criteria[1] = $this->criteria[0];
@@ -89,10 +89,10 @@ class Binder {
                     );
                 }
             }
-            $data = $res;
+            $data[] = $res;
         }
 
-        $this->setResult($data);
+        $this->setResult($data[0]);
         return $this;
     }
 

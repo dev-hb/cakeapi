@@ -38,11 +38,7 @@ class Logger {
     }
 
     public function json($data, $code=200, $status="OK"){
-        if($data == null){
-            echo json_encode(["status" => $status, "code" => $code, "body" => null]);
-        }else{
-            echo json_encode(["status" => $status, "code" => $code, "body" => $data]);
-        }
+        echo json_encode(["status" => $status, "code" => $code, "body" => $data]);
     }
 
 }
