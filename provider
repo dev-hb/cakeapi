@@ -148,6 +148,9 @@ if(isValide($arg, $operations)){
                 echo "Tokener configured successfully.\n";
                 echo "Preferred model Authentication created successfully.";
             }
+        }else if($value == 'storage'){
+            file_put_contents("preferred/StorageManager.php", makePreferredStorage("StorageManager"));
+            echo "Storage has been added in your project.\n";
         }else{
             echo "Invalid functionnality or missing value!";
         }
@@ -239,6 +242,13 @@ function makePreferred($className){
     "\n\t}\n\n}";
 }
 
+function makePreferredStorage($className){
+    return "<?php\n\nclass $className extends PreferredHandler {\n\n\tpublic function handle(){\n\t\t".
+    "// TODO add actions to take here (Handle both GET and POST methods)\n\t\t// Create Dracula instance and execute the query method\n".
+    "\t\t switch (".'$this->getAction()'."){\n\n\t\t\t// TODO add code here\n\n\t\t}".
+    "\n\t}\n\n}";
+}
+
 function makeAuthentication($blueprint){
 return "<?php\n\nclass Authentication extends PreferredHandler {\n\t// TODO edit this attributes\n".
     "\tprivate ".'$username_email_field_name'." = 'username';\n\tprivate ".'$password_field_name'." = 'password';\n".
@@ -279,3 +289,4 @@ return "<?php\n\nclass Authentication extends PreferredHandler {\n\t// TODO edit
     "\t\t\t\tif(".'$res'.") (new Logger())->json(['msg' => 'logout successfully']);\n\t\t\t\t  else (new Logger())->json(['err' => 'invalid token']);\n\n".
     "\t\t\tbreak;\n\n\t\t}\n\t}\n\n}";
 }
+

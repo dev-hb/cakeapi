@@ -1,6 +1,6 @@
 models
 preferred
 privileges
-uploads
-.connection
+shared_storage
+.config
 tokener.config
